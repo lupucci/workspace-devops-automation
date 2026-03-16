@@ -3,19 +3,13 @@
   become: true
   gather_facts: false
 
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
   tasks:
 
   - name: Esperar cloud-init terminar
     raw: cloud-init status --wait
-
-  - name: Instalar Python 3.9 e dependências
-    raw: |
-      sudo apt-get update
-      sudo apt-get install -y python3.9 python3-apt
-
-  - name: Definir Python 3.9 como interpreter
-    set_fact:
-      ansible_python_interpreter: /usr/bin/python3.9
 
   - name: Instalar dependências
     apt:
