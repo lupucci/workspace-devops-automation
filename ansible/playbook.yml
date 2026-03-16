@@ -4,6 +4,15 @@
 
   tasks:
 
+  - name: Instalar Python 3.9 (raw porque Ansible ainda não funciona)
+    raw: |
+      sudo apt update
+      sudo apt install -y python3.9 python3.9-distutils
+
+  - name: Definir Python 3.9 como interpreter
+    set_fact:
+      ansible_python_interpreter: /usr/bin/python3.9
+
   - name: Instalar dependências
     apt:
       name:
