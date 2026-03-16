@@ -4,10 +4,13 @@
 
   tasks:
 
+  - name: Esperar apt liberar
+    raw: sleep 60
+
   - name: Instalar Python 3.9 (raw porque Ansible ainda não funciona)
     raw: |
-      sudo apt update
-      sudo apt install -y python3.9 python3.9-distutils
+      sudo apt-get update -y
+      sudo apt-get install -y python3.9
 
   - name: Definir Python 3.9 como interpreter
     set_fact:
